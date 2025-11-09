@@ -5,8 +5,16 @@ import { ValidationPipe } from '@nestjs/common'
 
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 
+import { LoggerService } from './core/logger/logger.service'
+
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule)
+  const app = await NestFactory.create(AppModule, {
+    bufferLogs: true
+  })
+  app.enableShutdownHooks()
+
+  const logger = app.get<LoggerService>(LoggerService)
+  app.useLogger(logger)
 
   // Validaciones globales
   app.useGlobalPipes(

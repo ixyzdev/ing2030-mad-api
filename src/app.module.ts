@@ -1,17 +1,28 @@
 import { Module } from '@nestjs/common'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
-
-import { MongooseModule } from '@nestjs/mongoose'
 import { ConfigModule } from '@nestjs/config'
+
+import { LoggerModule } from './core/logger/logger.module'
+import { DatabaseModule } from './core/database/database.module'
+import { HealthModule } from './core/health/health.module'
+
+import { UsersModule } from './modules/users/users.module'
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
-    // ! If there isnt a MONGO_URI env variable, this will throw an error on startup
-    MongooseModule.forRoot(process.env.MONGO_URI!)
+    // Configuración global de variables de entorno
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
+
+    // Infraestructura core
+    LoggerModule, // logger global
+    DatabaseModule, // Mongoose forRootAsync + connectionFactory
+    HealthModule, // /health con Terminus
+
+    // Módulos de dominio / features
+    UsersModule
   ],
-  controllers: [AppController],
-  providers: [AppService]
+  controllers: [],
+  providers: []
 })
 export class AppModule {}

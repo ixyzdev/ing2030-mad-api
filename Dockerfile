@@ -22,6 +22,8 @@ RUN npm run build
 # * Etapa 2: runtime limpio
 FROM node:22-alpine AS runner
 
+# RUN apk add --no-cache bash
+
 WORKDIR /usr/src/app
 
 # Copiar solo lo necesario
