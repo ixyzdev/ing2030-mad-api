@@ -5,27 +5,21 @@ import {
 } from '@nestjs/common'
 
 @Injectable()
-export class LoggerService implements NestLoggerService {
-  private readonly logger = new Logger('App')
-
-  log(message: string, context?: string): void {
-    this.logger.log(message, context)
+export class LoggerService extends Logger implements NestLoggerService {
+  log(message: string, context?: string) {
+    super.log(message, context)
   }
-
-  error(message: string, trace?: string, context?: string): void {
-    this.logger.error(message, trace, context)
+  error(message: string, trace?: string, context?: string) {
+    super.error(message, trace, context)
   }
-
-  warn(message: string, context?: string): void {
-    this.logger.warn(message, context)
+  warn(message: string, context?: string) {
+    super.warn(message, context)
   }
-
-  debug(message: string, context?: string): void {
-    this.logger.debug(message, context)
+  debug(message: string, context?: string) {
+    super.debug(message, context)
   }
-
-  verbose(message: string, context?: string): void {
-    this.logger.verbose(message, context)
+  verbose(message: string, context?: string) {
+    super.verbose(message, context)
   }
 
   // Punto de extensión futuro:
