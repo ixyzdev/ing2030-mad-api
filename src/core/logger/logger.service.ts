@@ -1,11 +1,11 @@
 import {
   Injectable,
-  Logger,
+  ConsoleLogger,
   LoggerService as NestLoggerService
 } from '@nestjs/common'
 
 @Injectable()
-export class LoggerService extends Logger implements NestLoggerService {
+export class LoggerService extends ConsoleLogger implements NestLoggerService {
   log(message: string, context?: string) {
     super.log(message, context)
   }

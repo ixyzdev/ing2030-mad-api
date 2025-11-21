@@ -1,16 +1,17 @@
 {
   "name": "NestJS Dev",
-  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.extend.yml"],
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "docker-compose.extend.yml"
+  ],
   "service": "api",
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/home/node/app",
   "shutdownAction": "stopCompose",
-
   "remoteUser": "node",
-
-  "postCreateCommand": "npm install",
-
-  "forwardPorts": [3000],
-
+  "postCreateCommand": "npm install ",
+  "forwardPorts": [
+    3000
+  ],
   "customizations": {
     "vscode": {
       "extensions": [

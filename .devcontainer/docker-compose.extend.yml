@@ -4,8 +4,13 @@ services:
       context: .
       dockerfile: .devcontainer/Dockerfile
 
+    user: node
     volumes:
-      - .:/workspace:cached
+      - .:/home/node/app:cached
+      - node_modules:/home/node/app/node_modules
 
     # Overrides default command so things don't shut down after the process ends.
     command: /bin/sh -c "while sleep 1000; do :; done"
+
+volumes:
+  node_modules:
