@@ -5,10 +5,10 @@
     "docker-compose.extend.yml"
   ],
   "service": "api",
-  "workspaceFolder": "/home/node/app",
+  "workspaceFolder": "/home/node/workspace",
   "shutdownAction": "stopCompose",
   "remoteUser": "node",
-  "postCreateCommand": "npm install ",
+  "postCreateCommand": "npm install",
   "forwardPorts": [
     3000
   ],

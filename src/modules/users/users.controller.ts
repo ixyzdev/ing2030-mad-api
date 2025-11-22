@@ -9,21 +9,23 @@ import {
 } from '@nestjs/common'
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger'
 import { UsersService } from './users.service'
+
+import { User } from './schemas/user.schema'
+
+// * DTOs
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
-import { User } from './schemas/user.schema'
+import { UserResponseDto } from './dto/user-response.dto'
 
 @ApiTags('users')
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) { }
 
-  @Post()
-  @ApiOperation({ summary: 'Crear usuario' })
   @ApiResponse({
     status: 201,
     description: 'Usuario creado exitosamente.',
-    type: User
+    type: UserResponseDto
   })
   create(@Body() dto: CreateUserDto) {
     return this.usersService.create(dto)
