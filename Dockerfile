@@ -24,6 +24,8 @@ FROM node:22-alpine AS runner
 
 # RUN apk add --no-cache bash
 
+ARG NODE_ENV=production
+
 WORKDIR /usr/src/app
 
 # Copiar solo lo necesario
@@ -32,7 +34,6 @@ RUN npm ci --omit=dev
 
 COPY --from=builder /usr/src/app/dist ./dist
 
-ENV NODE_ENV=production
 ENV PORT=3000
 
 EXPOSE 3000

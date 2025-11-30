@@ -22,6 +22,8 @@ import { UserResponseDto } from './dto/user-response.dto'
 export class UsersController {
   constructor(private readonly usersService: UsersService) { }
 
+  @Post()
+  @ApiOperation({ summary: 'Crear usuario' })
   @ApiResponse({
     status: 201,
     description: 'Usuario creado exitosamente.',
@@ -31,35 +33,35 @@ export class UsersController {
     return this.usersService.create(dto)
   }
 
-  @Get()
-  @ApiOperation({ summary: 'Listar usuarios' })
-  @ApiResponse({
-    status: 200,
-    description: 'Lista completa de usuarios.',
-    type: [User]
-  })
-  findAll() {
-    return this.usersService.findAll()
-  }
+  // @Get()
+  // @ApiOperation({ summary: 'Listar usuarios' })
+  // @ApiResponse({
+  //   status: 200,
+  //   description: 'Lista completa de usuarios.',
+  //   type: [UserResponseDto]
+  // })
+  // findAll() {
+  //   return this.usersService.findAll()
+  // }
 
-  @Get(':id')
-  @ApiOperation({ summary: 'Obtener usuario por ID' })
-  @ApiResponse({ status: 200, type: User })
-  findOne(@Param('id') id: string) {
-    return this.usersService.findById(id)
-  }
+  // @Get(':id')
+  // @ApiOperation({ summary: 'Obtener usuario por ID' })
+  // @ApiResponse({ status: 200, type: User })
+  // findOne(@Param('id') id: string) {
+  //   return this.usersService.findById(id)
+  // }
 
-  @Patch(':id')
-  @ApiOperation({ summary: 'Actualizar usuario' })
-  @ApiResponse({ status: 200, type: User })
-  update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
-    return this.usersService.update(id, dto)
-  }
+  // @Patch(':id')
+  // @ApiOperation({ summary: 'Actualizar usuario' })
+  // @ApiResponse({ status: 200, type: User })
+  // update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
+  //   return this.usersService.update(id, dto)
+  // }
 
-  @Delete(':id')
-  @ApiOperation({ summary: 'Eliminar usuario' })
-  @ApiResponse({ status: 204 })
-  remove(@Param('id') id: string) {
-    return this.usersService.delete(id)
-  }
+  // @Delete(':id')
+  // @ApiOperation({ summary: 'Eliminar usuario' })
+  // @ApiResponse({ status: 204 })
+  // remove(@Param('id') id: string) {
+  //   return this.usersService.delete(id)
+  // }
 }

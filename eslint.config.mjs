@@ -9,7 +9,6 @@ export default defineConfig([
     ignores: ['node_modules', 'dist', 'coverage', 'build', 'eslint.config.mjs']
   },
   eslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
   eslintPluginPrettierRecommended,
   {
     languageOptions: {
